@@ -54,64 +54,64 @@ rota.post('/carros', (req, res) => {
     }
 });
 
-// rota.get('/clientes/:codigo', (req, res) => {
-//     const id = parseInt(req.params.codigo);
+rota.get('/carros/:codigo', (req, res) => {
+    const id = parseInt(req.params.codigo);
 
-//     const cliente = clientes.find(c => c.id === id);
+    const carro = carros.find(c => c.id === id);
 
-//     if (cliente) {
-//         res.json(cliente);
-//     } else {
-//         res.status(404).json({"message": "Cliente não encontrado"});
-//     }
-// });
+    if (carro) {
+        res.json(carro);
+    } else {
+        res.status(404).json({"message": "Cliente não encontrado"});
+    }
+});
 
-// rota.put('/clientes/:codigo', (req, res) => {
-//     const id = parseInt(req.params.codigo);
-//     const cliente = req.body;
+rota.put('/clientes/:codigo', (req, res) => {
+    const id = parseInt(req.params.codigo);
+    const cliente = req.body;
 
-//     if (id <= 0) {
-//         res.status(400).json({"mensagem": "'codigo' deve ser maior que 0"});
-//     }
-//     if (cliente.nome.length < 3) {
-//         res.status(400).json({"mensagem": "'nome' deve conter no mínimo 3 caracteres"});
-//     }
-//     if (cliente.nome.length > 100) {
-//         res.status(400).json({"mensagem": "'nome' deve conter no máximo 100 caracteres"});
-//     }
-//     if (cliente.telefone.toString().length != 11) {
-//         res.status(400).json({"mensagem": "'telefone' deve conter exatamente 11 dígitos"});
-//     }
+    if (id <= 0) {
+        res.status(400).json({"mensagem": "'codigo' deve ser maior que 0"});
+    }
+    if (cliente.nome.length < 3) {
+        res.status(400).json({"mensagem": "'nome' deve conter no mínimo 3 caracteres"});
+    }
+    if (cliente.nome.length > 100) {
+        res.status(400).json({"mensagem": "'nome' deve conter no máximo 100 caracteres"});
+    }
+    if (cliente.telefone.toString().length != 11) {
+        res.status(400).json({"mensagem": "'telefone' deve conter exatamente 11 dígitos"});
+    }
 
-//     const idClienteRemovido = clientes.findIndex(c => c.id === id);
+    const idClienteRemovido = clientes.findIndex(c => c.id === id);
 
-//     if (idClienteRemovido != -1) {
-//         clientes.splice(idClienteRemovido, 1);
+    if (idClienteRemovido != -1) {
+        clientes.splice(idClienteRemovido, 1);
 
-//         const clienteNovo = {
-//             id: cliente.id,
-//             nome: cliente.nome,
-//             telefone: cliente.telefone
-//         };
+        const clienteNovo = {
+            id: cliente.id,
+            nome: cliente.nome,
+            telefone: cliente.telefone
+        };
 
-//         clientes.push(clienteNovo);
-//         res.json({"mensagem": "Cliente atualizado com sucesso"});
-//     } else {
-//         res.status(404).json({"message": "Cliente não encontrado"});
-//     }
-// });
+        clientes.push(clienteNovo);
+        res.json({"mensagem": "Cliente atualizado com sucesso"});
+    } else {
+        res.status(404).json({"message": "Cliente não encontrado"});
+    }
+});
 
-// rota.delete('/clientes/:codigo', (req, res) => {
-//     const id = parseInt(req.params.codigo);
+rota.delete('/clientes/:codigo', (req, res) => {
+    const id = parseInt(req.params.codigo);
 
-//     const idClienteRemovido = clientes.findIndex(c => c.id === id);
+    const idClienteRemovido = clientes.findIndex(c => c.id === id);
 
-//     if (idClienteRemovido != -1) {
-//         clientes.splice(idClienteRemovido, 1);
-//         res.status(204).json();
-//     } else {
-//         res.status(404).json({"message": "Cliente não encontrado"});
-//     }
-// });
+    if (idClienteRemovido != -1) {
+        clientes.splice(idClienteRemovido, 1);
+        res.status(204).json();
+    } else {
+        res.status(404).json({"message": "Cliente não encontrado"});
+    }
+});
 
 module.exports = rota;
