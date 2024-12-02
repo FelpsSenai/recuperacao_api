@@ -2,7 +2,7 @@ const express = require('express');
 const rota = express.Router();
 
 const clientes = [];
-const idClienteNovo = 1;
+let idClienteNovo = 1;
 
 rota.get('/clientes', (req, res) => {
     res.json(clientes);
@@ -17,11 +17,8 @@ rota.post('/clientes', (req, res) => {
     if (cliente.nome.length > 100) {
         res.status(400).json({"mensagem": "'nome' deve conter no máximo 100 caracteres"});
     }
-    if (cliente.telefone.length != 11) {
+    if (cliente.telefone.toString().length != 11) {
         res.status(400).json({"mensagem": "'telefone' deve conter exatamente 11 dígitos"});
-    }
-    if (!cliente.telefone instanceof 'number') {
-        res.status(400).json({"mensagem": "'telefone' deve conter apenas números"});
     }
 
     const novoCliente = {
