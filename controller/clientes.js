@@ -44,4 +44,21 @@ rota.get('/clientes/:codigo', (req, res) => {
     }
 });
 
+rota.put('/clientes/:codigo', (req, res) => {
+
+});
+
+rota.delete('/clientes/:codigo', (req, res) => {
+    const id = parseInt(req.params.codigo);
+
+    const idClienteRemovido = clientes.findIndex(c => c.id === id);
+
+    if (idClienteRemovido != -1) {
+        clientes.splice(idClienteRemovido, 1);
+        res.status(204).json();
+    } else {
+        res.status(404).json({"message": "Cliente não encontrado"});
+    }
+});
+
 module.exports = rota;
