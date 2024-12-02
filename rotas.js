@@ -1,7 +1,7 @@
 const express = require('express');
 const rotas = express.Router();
 
-const clientes = require('./controller/clientes');
+const clientes = require('./controller/clientes').rota;
 const carros = require('./controller/carros');
 const servicos = require('./controller/servicos');
 const agendamentos = require('./controller/agendamentos');
