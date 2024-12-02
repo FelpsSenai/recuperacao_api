@@ -88,7 +88,7 @@ rota.delete('/clientes/:codigo', (req, res) => {
 
     if (idClienteRemovido != -1) {
         clientes.splice(idClienteRemovido, 1);
-        res.status(204).json();
+        res.json({"mensagem": "Cliente removido com sucesso"});
     } else {
         res.status(404).json({"message": "Cliente não encontrado"});
     }
