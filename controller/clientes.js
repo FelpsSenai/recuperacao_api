@@ -32,4 +32,16 @@ rota.post('/clientes', (req, res) => {
     idClienteNovo++;
 });
 
+rota.get('/clientes/:codigo', (req, res) => {
+    const id = parseInt(req.params.codigo);
+
+    const cliente = clientes.find(c => c.id === id);
+
+    if (cliente) {
+        res.json(cliente);
+    } else {
+        res.status(404).json({"message": "Cliente não encontrado"});
+    }
+});
+
 module.exports = rota;
