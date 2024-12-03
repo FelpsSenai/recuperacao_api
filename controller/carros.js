@@ -124,16 +124,16 @@ rota.put('/carros/:codigo', (req, res) => {
     }
 });
 
-rota.delete('/clientes/:codigo', (req, res) => {
+rota.delete('/carros/:codigo', (req, res) => {
     const id = parseInt(req.params.codigo);
 
-    const idClienteRemovido = clientes.findIndex(c => c.id === id);
+    const idCarroRemovido = carros.findIndex(c => c.id === id);
 
-    if (idClienteRemovido != -1) {
-        clientes.splice(idClienteRemovido, 1);
-        res.status(204).json();
+    if (idCarroRemovido != -1) {
+        carros.splice(idCarroRemovido, 1);
+        res.status(200).json({"mensagem": "Carro removido com sucesso"});
     } else {
-        res.status(404).json({"message": "Cliente não encontrado"});
+        res.status(404).json({"message": "Carro não encontrado"});
     }
 });
 
