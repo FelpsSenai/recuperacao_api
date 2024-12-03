@@ -137,4 +137,4 @@ rota.delete('/carros/:codigo', (req, res) => {
     }
 });
 
-module.exports = rota;
+module.exports = {rota, carros};
