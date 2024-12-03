@@ -106,7 +106,7 @@ rota.put('/carros/:codigo', (req, res) => {
                 carros.splice(idCarroRemovido, 1);
 
                 const novoCarro = {
-                    id: idCarroNovo,
+                    id: id,
                     marca: carro.marca,
                     modelo: carro.modelo,
                     tamanho: carro.tamanho,
